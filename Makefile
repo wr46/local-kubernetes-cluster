@@ -1,7 +1,11 @@
 KIND_CONFIG="kind-cluster-config.yaml"
-CLUSTER_NAME:=$(shell grep '^name:' ${KIND_CONFIG} | awk '{print $$2}')
+CLUSTER_NAME=$(shell grep '^name:' ${KIND_CONFIG} | awk '{print $$2}')
+CUSTOM_IMAGE=$(shell grep -m 1 '^  image:' ${KIND_CONFIG} | awk '{print $$2}')
 
-create-cluster:
+build-custom-node:
+	@docker build -t ${CUSTOM_IMAGE} .
+
+create-cluster: build-custom-node
 	@kind create cluster --config ${KIND_CONFIG}
 
 show-clusters:

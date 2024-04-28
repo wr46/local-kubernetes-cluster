@@ -6,6 +6,9 @@ Local multi node kubernetes cluster playground using kind
 
 
 ```bash
+# Use a local image for custom nodes
+make build-custom-node
+
 # Setup the kind cluster using ./kind-cluster-config.yaml
 make create-cluster
 

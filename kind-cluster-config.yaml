@@ -1,3 +1,4 @@
+# Don't rename this file, Makefile fetch data by filename
 kind: Cluster
 apiVersion: kind.x-k8s.io/v1alpha4
 name: local-cluster
@@ -17,8 +18,8 @@ kubeadmConfigPatchesJSON6902:
       value: kind-hostname
 nodes:
 - role: control-plane
-  image: kindest/node:v1.29.2@sha256:51a1434a5397193442f0be2a297b488b6c919ce8a3931be0ce822606ea5ca245
+  image: custom-node:v1.29.2 # Makefile only fetch this image... use the same in all nodes
 - role: worker
-  image: kindest/node:v1.29.2@sha256:51a1434a5397193442f0be2a297b488b6c919ce8a3931be0ce822606ea5ca245
+  image: custom-node:v1.29.2
 - role: worker
-  image: kindest/node:v1.29.2@sha256:51a1434a5397193442f0be2a297b488b6c919ce8a3931be0ce822606ea5ca245
+  image: custom-node:v1.29.2
